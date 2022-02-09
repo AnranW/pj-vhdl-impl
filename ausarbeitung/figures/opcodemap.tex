@@ -1,0 +1,27 @@
+\vspace{0.1in}
+\definecolor{gray}{RGB}{180,180,180}
+\definecolor{darkgray}{RGB}{160,160,160}
+\newcommand{\f}[1]{\cellcolor{darkgray}\tiny{#1}}
+\begin{table*}[htbp]
+\begin{center}
+{%\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+  \hline
+  inst[4:2] & 000      & 001        & 010               & 011        & 100      & 101               & 110               & \cellcolor{gray}111 \\ \cline{1-1}
+  inst[6:5] &          &            &                   &            &          &                   &                   & \cellcolor{gray}($>32b$)  \\ \hline
+		 00 & LOAD     & \f{LOAD-F} & \f{{\em custom-0}}&\f{MISC-MEM}& OP-IMM   & AUIPC             & \f{OP-IMM-32}     & \cellcolor{gray} $48b$\\ \hline
+		 01 & STORE    & \f{STORE-F}& \f{{\em custom-1}}& \f{AMO}    & OP       & LUI               & \f{OP-32}         & \cellcolor{gray} $64b$ \\ \hline
+		 10 & \f{MADD} & \f{MSUB}   & \f{NMSUB}         & \f{NMADD}  & \f{OP-FP}& \f{{\em reserved}}& \f{{\em custom-2}}& \cellcolor{gray} $48b$\\ \hline
+		 11 & BRANCH   & JALR       & \f{{\em reserved}}& JAL        &\f{SYSTEM}& \f{{\em reserved}}& \f{{\em custom-3}}& \cellcolor{gray} $\geq80b$\\ \hline
+
+ \end{tabular}
+ \end{adjustbox}
+}
+\end{center}
+%\vspace{-0.15in}
+\caption{RISC-V base opcode map, inst[1:0]=11}
+\label{Tab:opcodemap}
+\end{table*}
+\let\f\undefined

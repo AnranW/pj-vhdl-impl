@@ -1,0 +1,194 @@
+\documentclass[12pt,oneside]{article}
+%\usepackage[pass,paperwidth=22cm,paperheight=28cm]{geometry}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{framed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Meta informations:
+\newcommand{\trauthor}{Benedikt Ostendorf, Anran Wang, Jasper Schwarzwald}
+\newcommand{\trtitle}{Entwurf und Implementation eines Mikrorechners}
+\newcommand{\trdate}{\today}
+\newcommand{\trtype}{Projekt Bericht} %{Seminararbeit} %{Proseminararbeit}
+\newcommand{\trcourse}{Entwurf, Realisierung und Programmierung eines Mikrorechners}
+\newcommand{\trmatrikelnummer}{6981708, 6923546, 6948085}
+\newcommand{\tremail}{\{7ostendo, 6awang, 6schwarz\}@informatik.uni-hamburg.de}
+%\newcommand{\trarbeitsbereich}{Knowledge Technology, WTM}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Languages:
+
+% Falls die Ausarbeitung in Deutsch erfolgt:
+ \usepackage[german]{babel}
+ \usepackage[T1]{fontenc}
+ %\usepackage[latin1]{inputenc}
+ %\usepackage[latin9]{inputenc}
+ \selectlanguage{german}
+
+% If the thesis is written in English:
+%\usepackage[english]{babel}
+%\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bind packages:
+\usepackage{acronym}                    % Acronyms
+\usepackage{algorithmic}								% Algorithms and Pseudocode
+\usepackage{algorithm}									% Algorithms and Pseudocode
+\usepackage{amsfonts}                   % AMS Math Packet (Fonts)
+\usepackage{amsmath}                    % AMS Math Packet
+\usepackage{amssymb}                    % Additional mathematical symbols
+\usepackage{amsthm}
+\usepackage{booktabs}                   % Nicer tables
+%\usepackage[font=small,labelfont=bf]{caption} % Numbered captions for figures
+\usepackage{color}                      % Enables defining of colors via \definecolor
+\definecolor{uhhRed}{RGB}{254,0,0}		  % Official Uni Hamburg Red
+\definecolor{uhhGrey}{RGB}{122,122,120} % Official Uni Hamburg Grey
+\usepackage{fancybox}                   % Gleichungen einrahmen
+\usepackage{fancyhdr}										% Packet for nicer headers
+%\usepackage{fancyheadings}             % Nicer numbering of headlines
+
+%\usepackage[outer=3.35cm]{geometry} 	  % Type area (size, margins...) !!!Release version
+%\usepackage[outer=2.5cm]{geometry} 		% Type area (size, margins...) !!!Print version
+\usepackage{geometry} 									% Type area (size, margins...) !!!Proofread version
+%\usepackage[outer=3.15cm]{geometry} 	  % Type area (size, margins...) !!!Draft version
+%\geometry{a4paper,body={5.8in,9in}}
+\geometry{a4paper,paperwidth=21.59cm,paperheight=27.94cm, body={5.8in,9in}}
+
+\usepackage{graphicx}                   % Inclusion of graphics
+%\usepackage{latexsym}                  % Special symbols
+\usepackage{longtable}									% Allow tables over several parges
+\usepackage{listings}                   % Nicer source code listings
+\usepackage{multicol}										% Content of a table over several columns
+\usepackage{multirow}										% Content of a table over several rows
+\usepackage{rotating}										% Alows to rotate text and objects
+%\usepackage[hang]{subfigure}            % Allows to use multiple (partial) figures in a fig
+%\usepackage[font=footnotesize,labelfont=rm]{subfig}	% Pictures in a floating environment
+\usepackage{tabularx}										% Tables with fixed width but variable rows
+\usepackage{url,xspace,boxedminipage}   % Accurate display of URLs
+\usepackage{hyperref}
+\usepackage{tikz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurationen:
+
+\hyphenation{whe-ther} 									% Manually use: "\-" in a word: Staats\-ver\-trag
+
+%\lstloadlanguages{C}                   % Set the default language for listings
+\DeclareGraphicsExtensions{.pdf,.svg,.jpg,.png,.eps} % first try pdf, then eps, png and jpg
+\graphicspath{{./images/}} 								% Path to a folder where all pictures are located
+\pagestyle{fancy} 											% Use nicer header and footer
+
+% Redefine the environments for floating objects:
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.9} 			  %Standard: 0.7
+\renewcommand{\bottomfraction}{0.5}		  %Standard: 0.3
+\renewcommand{\textfraction}{0.1}		  	%Standard: 0.2
+\renewcommand{\floatpagefraction}{0.8} 	%Standard: 0.5
+
+% Tables with a nicer padding:
+\renewcommand{\arraystretch}{1.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Additional 'theorem' and 'definition' blocks:
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{theorem}{Satz}[section]		% Wenn in Deutsch geschrieben wird.
+\newtheorem{axiom}{Axiom}[section]
+%\newtheorem{axiom}{Fakt}[chapter]			% Wenn in Deutsch geschrieben wird.
+%Usage:%\begin{axiom}[optional description]%Main part%\end{fakt}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+%Additional types of axioms:
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{observation}[axiom]{Observation}
+
+%Additional types of definitions:
+\theoremstyle{remark}
+%\newtheorem{remark}[definition]{Bemerkung} % Wenn in Deutsch geschrieben wird.
+\newtheorem{remark}[definition]{Remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provides TODOs within the margin:
+\newcommand{\TODO}[1]{\marginpar{\emph{\small{{\bf TODO: } #1}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abbreviations and mathematical symbols
+\newcommand{\modd}{\text{ mod }}
+\newcommand{\RS}{\mathbb{R}}
+\newcommand{\NS}{\mathbb{N}}
+\newcommand{\ZS}{\mathbb{Z}}
+\newcommand{\dnormal}{\mathit{N}}
+\newcommand{\duniform}{\mathit{U}}
+
+\newcommand{\erdos}{Erd\H{o}s}
+\newcommand{\renyi}{-R\'{e}nyi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document:
+\begin{document}
+\renewcommand{\headheight}{14.5pt}
+
+\fancyhead{}
+\fancyhead[LE]{ \slshape \trauthor}
+\fancyhead[LO]{}
+\fancyhead[RE]{}
+\fancyhead[RO]{ \slshape Deep Reinforcement Learning in Dialog Systems}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cover Header:
+\begin{titlepage}
+  \begin{minipage}{0.45\linewidth}
+    \begin{flushleft}
+  		Universit\"at Hamburg\\
+  		Fachbereich Informatik\\
+  		%\trarbeitsbereich\\
+  	\end{flushleft}
+  \end{minipage}
+  \begin{minipage}{0.45\linewidth}
+    \begin{flushright}
+      \includegraphics[scale=0.3]{figures/logo.pdf}
+    \end{flushright}
+  \end{minipage}
+	\vspace{3.5cm}
+	\begin{center}
+		\huge Entwurf und Implementation eines Mikrorechners\\
+	\end{center}
+	\vspace{3.5cm}
+	\begin{center}
+		\normalsize Projekt Bericht\\
+		[0.2cm]
+		\Large Entwurf, Realisierung und Programmierung eines Mikrorechners\\
+		[1.5cm]
+		\Large Benedikt Ostendorf, Anran Wang, Jasper Schwarzwald \\
+		[0.2cm]
+		\normalsize Matr.Nr. 6981708, 6923546, 6948085\\
+		[0.2cm]
+		\normalsize \{7ostendo, 6awang, 6schwarz\}@informatik.uni-hamburg.de\\
+		[1.5cm]
+		\Large \today
+	\end{center}
+	\vfill
+\end{titlepage}
+
+	%backsite of cover sheet is empty!
+%\thispagestyle{empty}
+%\hspace{1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract:
+
+% Abstract gives a brief summary of the main points of a paper:
+
+
+% the actual content, usually separated over a number of sections
+% each section is assigned a label, in order to be able to put a
+% crossreference to it
+
+
+\end{document}

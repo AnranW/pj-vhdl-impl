@@ -1,0 +1,36 @@
+\newcommand{\instbit}[1]{\mbox{\scriptsize #1}}
+\newcommand{\instbitrange}[2]{~\instbit{#1} \hfill \instbit{#2}~}
+
+\begin{figure}[h]
+\begin{small}
+\begin{center}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.3in}@{}p{0.8in}@{}p{0.6in}@{}p{0.18in}@{}p{0.7in}@{}p{0.6in}@{}p{0.6in}@{}p{0.3in}@{}p{0.5in}l}
+\\
+\cline{1-9}
+\multicolumn{1}{|c|}{imm[12]} &
+\multicolumn{1}{c|}{imm[10:5]} &
+\multicolumn{2}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{imm[4:1]} &
+\multicolumn{1}{c|}{imm[11]} &
+\multicolumn{1}{c|}{opcode} &
+B-type \\
+\cline{1-9}
+\\
+\cline{1-9}
+\multicolumn{1}{|c|}{imm[20]} &
+\multicolumn{2}{c|}{imm[10:1]} &
+\multicolumn{1}{c|}{imm[11]} &
+\multicolumn{2}{c|}{imm[19:12]} &
+\multicolumn{2}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} &
+J-type \\
+\cline{1-9}
+\end{tabular}
+\end{center}
+\end{small}
+\caption{RISC-V base instruction formats showing immediate variants.}
+\label{fig:baseinstformatsimm}
+\end{figure}

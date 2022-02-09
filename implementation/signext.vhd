@@ -1,0 +1,10 @@
+library IEEE; use IEEE.STD_LOGIC_1164.all;
+entity signext is
+	port(a: in STD_LOGIC_VECTOR(15 downto 0); -- 16 bits
+			y: out STD_LOGIC_VECTOR(31 downto 0)); -- 32 bits
+end;
+
+architecture behave of signext is
+begin
+	y <= X"0000" & a when a(15) = '0' else X"ffff" & a; -- highest bit of a is copied 16 times 
+end;
