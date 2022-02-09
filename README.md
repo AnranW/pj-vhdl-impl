@@ -8,7 +8,7 @@ The implementation can be found in ./implementation
 
 The structure of the implementation is as follows:
 
-![alt text](figures/impl_struc.pdf)
+![This is an image](figures/impl_struc.pdf)
 
 The detail of the CPU is show in this figure:
 
