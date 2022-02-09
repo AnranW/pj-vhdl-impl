@@ -8,8 +8,8 @@ The implementation can be found in ./implementation
 
 The structure of the implementation is as follows:
 
-![This is an image](figures/impl_struc.pdf)
+![This is an image](https://github.com/AnranW/pj-vhdl-impl/blob/main/figures/impl_struc.pdf)
 
 The detail of the CPU is show in this figure:
 
-![alt text](figures/schaltplan.pdf)
+![alt text](https://github.com/AnranW/pj-vhdl-impl/blob/main/figures/schaltplan.pdf)
