@@ -8,8 +8,8 @@ The implementation can be found in ./implementation
 
 The structure of the implementation is as follows:
 
-![alt text](implementation/figures/impl_struc.pdf)
+![alt text](figures/impl_struc.pdf)
 
 The detail of the CPU is show in this figure:
 
-![alt text](implementation/figures/schaltplan.pdf)
+![alt text](figures/schaltplan.pdf)
