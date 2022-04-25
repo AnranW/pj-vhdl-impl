@@ -6,9 +6,9 @@ The report source files and pdf file can be found in ./ausarbeitung
 
 The implementation can be found in ./implementation
 
-The structure of the implementation is as follows: (seems github is having issues again, please click the icon to go to the image)
+The structure of the implementation is as follows: 
 
-![image](figures/impl_struc.pdf)
+![image](https://github.com/AnranW/pj-vhdl-impl/blob/d915700b7fa2d3f5bcf1811422e58e67da729ee7/figures/impl_struc.pdf)
 
 The detail of the CPU is show in this figure:
 
